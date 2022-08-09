@@ -1,0 +1,3 @@
+<template>
+    Likes Page
+</template>

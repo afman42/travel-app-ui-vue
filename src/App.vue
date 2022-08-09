@@ -2,7 +2,10 @@
   <div>
     <div v-if="!widthPhone">
       <router-view />
-      <div v-if="router.currentRoute.value.fullPath === '/'">
+      <div
+        v-if="router.currentRoute.value.fullPath === '/' || 
+        router.currentRoute.value.fullPath === '/likes' || 
+        router.currentRoute.value.fullPath === '/profile'">
         <BottomNavigator />
       </div>
     </div>
@@ -21,7 +24,7 @@ const dimension = window.innerWidth;
 const widthPhone = ref(false);
 onMounted(() => {
   if (dimension > 500) {
-    widthPhone.value = true 
+    widthPhone.value = true
   }
 })
 </script>

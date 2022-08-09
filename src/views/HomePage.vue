@@ -7,10 +7,15 @@ import discoverData from '../assets/data/discoverData';
 import activitiesData from '../assets/data/activitiesData';
 import learnMoreData from '../assets/data/learnMoreData';
 import colors from '../assets/colors/colors';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+function clickId(id){
+    router.push(`/${id}`);
+}
 </script>
 
 <template>
-    <div class="sm:min-h-screen sm:w-full">
+    <div class="sm:min-h-full sm:w-full">
         <div class="sm:mt-6 sm:mx-5 flex sm:justify-between">
             <IconMenu style="font-size: 40px;" />
             <img :src="PngPerson" class="sm:rounded-lg" />
@@ -26,7 +31,7 @@ import colors from '../assets/colors/colors';
                 >{{ item.text }}</div>
             </div>
             <div class="sm:flex sm:flex-row sm:bg-no-repeat sm:bg-cover sm:ml-4 sm:mt-2 wrapperXScroll">
-                <div class="sm:ml-5 sm:flex sm:items-end" v-for="item in discoverData" :style="{
+                <div @click="clickId(item.id)" class="sm:ml-5 sm:flex sm:items-end" v-for="item in discoverData" :style="{
                     backgroundImage: `url(${item.image})`,
                     width: '170px',
                     height: '250px',
@@ -39,7 +44,7 @@ import colors from '../assets/colors/colors';
                 </div>
             </div>
         </div>
-        <div class="sm:mt-3 sm:ml-7">
+        <div class="sm:mt-3 sm:ml-5">
             <h1 class="font-bold" :style="{ fontSize: '24px'}">Activities</h1>
             <div class="sm:flex sm:flex-row wrapperXScroll sm:mt-3">
                 <div class="sm:ml-3 sm:justify-center sm:w-full" v-for="item in activitiesData" >
